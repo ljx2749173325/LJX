@@ -1,5 +1,13 @@
 package com.lijixing.service;
 
-public class MyServiceImpl {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.lijixing.mapper.MyMapperDao;
+
+@Service
+public class MyServiceImpl implements MyService{
+
+	@Autowired
+	private MyMapperDao dao;
 }

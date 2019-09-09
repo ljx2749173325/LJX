@@ -12,7 +12,7 @@
 	http://www.springframework.org/schema/tx
 	 http://www.springframework.org/schema/tx/spring-tx.xsd">
 	<!-- 扫描业务层和数据层组件 -->
-	<context:component-scan base-package="com.bw" />
+	<context:component-scan base-package="com.lijixing" />
 	<!-- 数据源 -->
 	<bean name="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
@@ -25,9 +25,9 @@
 		<!-- 注入数据源 -->
 		<property name="dataSource" ref="dataSource"></property>
 		<!-- 别名的包 -->
-		<property name="typeAliasesPackage" value="com.bw.entity"></property>
+		<property name="typeAliasesPackage" value="com.lijixing.entity"></property>
 		<!-- mybatis的扫描映射文件 -->
-		<property name="mapperLocations" value="classpath:com/bw/mapper/*.xml"></property>
+		<property name="mapperLocations" value="classpath:com/lijixing/mapper/*.xml"></property>
 		<!-- 配置mybatis的分页插件 -->
 		
 		<property name="plugins">
@@ -47,7 +47,7 @@
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
 		<!-- mapper接口所在的包 -->
-		<property name="basePackage" value="com.bw.mapper"></property>
+		<property name="basePackage" value="com.lijixing.mapper"></property>
 	</bean>
 	<!-- aop的切面:事务管理器(环绕通知) -->
 	<bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
@@ -55,7 +55,7 @@
 	</bean>
 	<!-- 事务管理规则:AOP切入点    -->
 	<aop:config>
-		<aop:pointcut expression="execution(* com.bw.service.*.*(..))" id="pointcut"/>
+		<aop:pointcut expression="execution(* com.lijixing.service.*.*(..))" id="pointcut"/>
 		<aop:advisor advice-ref="advice" pointcut-ref="pointcut"/>	
 	</aop:config>
 	<!-- 切入点增强规则配置 -->
